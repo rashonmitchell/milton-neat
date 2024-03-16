@@ -1,0 +1,24 @@
+{%- assign default_qty_id = 'quantity-' | append: product.id -%}
+
+<div class="quantity">
+	<button class="quantity-button" name="minus" type="button">
+		<span class="sr-only">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
+		{% render 'icon', code: 'minus' %}
+	</button>
+
+	<label for="{{ qty_id | default: default_qty_id }}" class="sr-only">{{- 'products.product.quantity.label' -}}</label>
+	<input class="quantity-input"
+		type="number"
+		name="quantity"
+		id="{{ qty_id | default: default_qty_id }}"
+		min="1"
+		max="{{ product.selected_or_first_available_variant.inventory_quantity }}"
+		step="1"
+		value="1"
+		data-noui>
+
+	<button class="quantity-button" name="plus" type="button">
+		<span class="sr-only">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
+		{% render 'icon', code: 'plus' %}
+	</button>
+</div>
