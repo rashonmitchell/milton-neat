@@ -6,6 +6,13 @@
 
 'use strict';
 
+document.addEventListener('DOMContentLoaded', async () => {
+	await customElements.whenDefined('gmpx-store-locator');
+	const locator = document.querySelector('gmpx-store-locator');
+	locator.configureFromQuickBuilder(CONFIGURATION);
+  });
+
+
 // Set scrollbar width.
 function btyScrollBar( doc = document ) {
 	let domId = document.getElementById( 'dynamic-variables-theme-css' );
